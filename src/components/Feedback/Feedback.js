@@ -44,7 +44,7 @@ class Feddback extends Component{
     render() {
         return (
             <div className="container">
-                <h1>Please leave feedback</h1>
+                <h1 className="title">Please leave feedback</h1>
                 <Counter
                     onClickGood={this.handleClickGood}
                     onClickNeutral={this.handleClickNeutral}
