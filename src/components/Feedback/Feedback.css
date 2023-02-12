@@ -1,0 +1,44 @@
+.container {
+  /* margin-top: 10px; */
+  padding: 20px;
+}
+
+.container_btn {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.button {
+  margin-right: 15px;
+  height: 40px;
+  width: 120px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 25px;
+}
+
+.list {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.item {
+  margin-bottom: 5px;
+}
+
+.total_counter {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.positive_feedback {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+h1 {
+  margin: 10px 0px;
+}
+
+li {
+  list-style-type: none;
+}
