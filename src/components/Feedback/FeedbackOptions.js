@@ -1,6 +1,6 @@
 import React from "react";
 
-const Counter = (onClickGood, onClickNeutral, onClickBad) => (
+const FeedbackOptions  = ({onClickGood, onClickNeutral, onClickBad}) => (
     <div className="container_btn">
         <button type="button" onClick={onClickGood} className="button">Good</button>
         <button type="button" onClick={onClickNeutral} className="button">Neutral</button>
@@ -9,4 +9,4 @@ const Counter = (onClickGood, onClickNeutral, onClickBad) => (
         
     
 
-export default Counter;
+export default FeedbackOptions;
