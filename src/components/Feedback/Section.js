@@ -1,26 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 
-class Dropdown extends Component {
-    state = {
-        visible: false,
-    };
+const Section = ({ title, children }) => (
+    <>
+        <h1 className="title">{title}</h1>
+        {children}
+    </>
+    
+);
 
-    show = () => {
-        this.setState({ visible: true })
-    };
 
-    hide = () => {
-        this.setState({ visible: false })
-    };
-
-    render() {
-        return (
-            <div>
-                 {this.state.visible && (<div className="Dropdown"> Випадаюче вікно</div>)}
-        </div>
-           
-        )
-    }
+Section.propTypes = {
+    title: PropTypes.string
 };
 
-export default Dropdown;
+export default Section;

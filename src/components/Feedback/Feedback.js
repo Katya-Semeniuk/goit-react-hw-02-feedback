@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import './Feedback.css';
 import FeedbackOptions  from "./FeedbackOptions";
 import Statistics from './Statistics';
-import Dropdown from './Section';
-// import PropTypes from 'prop-types';
+import Section from './Section';
+import Notification from './Notification';
+
 
 class Feddback extends Component{
 
@@ -12,69 +13,51 @@ class Feddback extends Component{
         initialNeutral: 0,
         initialBad: 0
     };
-    // static PropTypes = {};
+   
     state = {
         good: this.props.initialGood,
         neutral: this.props.initialNeutral,
         bad: this.props.initialBad,
     };
-    handleClickGood = event => {
-        // const target = event.target;
-        // const { target } = event;
-        console.log('click on button Good')
-        console.log(event.target)
 
-        this.setState(prevState => ({
-            good: prevState.good + 1,
-        }))
+    handleLeaveFeedback = option => {
+        this.setState({
+           [option] : this.state[option] + 1,
+       })
     };
 
-    handleClickNeutral = event => {
-        this.setState(prevState => ({
-           neutral: prevState.neutral +1,
-       }))
-    };
-
-    handleClickBad = event => {
-        this.setState(prevState => ({
-            bad: prevState.bad + 1,
-        }))
-    };
-
-  
-
-
-    countPositiveFeedbackPercentage = () => {
-      return Math.floor(this.state.good/(this.state.good + this.state.neutral + this.state.bad))
-    } ;
-    
 
     render() {
+        const { good, neutral, bad } = this.state;
 
-    //     countTotalFeedback = () => {
-    //     return this.state.good + this.state.neutral + this.state.bad
-    // };
-    
-        let total = this.state.good + this.state.neutral + this.state.bad;
-        let positivePercentage = Math.floor(total/(this.state.good))
+     let total = good + neutral + bad;
+    let positivePercentage = Math.floor((good * 100) / total);
         
+    return (
+        <div className="container">
+            <Section title="Please leave feedback">
 
-        return (
-            <div className="container">
-                <h1 className="title">Please leave feedback</h1>
-                <FeedbackOptions
-                    onClickGood={this.handleClickGood}
-                    onClickNeutral={this.handleClickNeutral}
-                    onClickBad={this.handleClickBad}
-                />
-                <Statistics
-                    good={this.state.good}
-                    neutral={this.state.neutral}
-                    bad={this.state.bad}
-                    total ={total}
-                    positivePercentage={positivePercentage}
-                />
-                <Dropdown/>
+                 <FeedbackOptions
+                 options={Object.keys(this.state)}
+                  onLeaveFeedback={this.handleLeaveFeedback} />
+            </Section>
+
+            
+            <Section title="Statistics">
+                {total > 0
+                    ? <Statistics
+                 good={this.state.good}
+                 neutral={this.state.neutral}
+                 bad={this.state.bad}
+                 total ={total}
+                 positivePercentage={positivePercentage}
+                    />
+                    : <Notification message="There is no feedback" />
+                }  
+            </Section>
+                 
+                
+                    
         </div> )
     }
 }

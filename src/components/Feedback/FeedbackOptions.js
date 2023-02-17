@@ -1,12 +1,25 @@
 import React from "react";
+import PropTypes from 'prop-types';
+  
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+    return (
+         <div className="container_btn">
+        {options.map((item, i) => (
+            <button
+                type="button"
+                className="button"
+            key={i}
+            onClick={() => onLeaveFeedback(item)}>
+                {item}
+             </button > 
+        ))}
+        </div>
+    )
+    };
 
-const FeedbackOptions  = ({onClickGood, onClickNeutral, onClickBad}) => (
-    <div className="container_btn">
-        <button type="button" onClick={onClickGood} className="button">Good</button>
-        <button type="button" onClick={onClickNeutral} className="button">Neutral</button>
-        <button type="button" onClick={onClickBad} className="button">Bad</button>
-    </div>);
-        
-    
+
+FeedbackOptions.propTypes = {
+     options: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default FeedbackOptions;
